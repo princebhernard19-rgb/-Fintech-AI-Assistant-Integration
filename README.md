@@ -10,6 +10,7 @@ This repository demonstrates the integration of a custom-trained AI chatbot for 
 To prevent unauthorized access and ensure the bot knows exactly who it is talking to, I implemented a Server-Side Identity Verification flow.
 1. Server-Side Token Generation
 The server generates a signed JWT using a secret key. This ensures that user data (like Stripe account details) cannot be tampered with.
+
 const jwt = require('jsonwebtoken');
 
 // Securely sign user data for the chatbot
@@ -25,6 +26,7 @@ const token = jwt.sign(
 
 2. Client-Side Authentication
 The frontend receives the secure token and "identifies" the user within the Chatbase environment.
+
 // Send the secure token to Chatbase
 const token = await getUserToken(); 
 window.chatbase('identify', { token });
