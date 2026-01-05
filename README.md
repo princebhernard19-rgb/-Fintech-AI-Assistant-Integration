@@ -11,25 +11,8 @@ To prevent unauthorized access and ensure the bot knows exactly who it is talkin
 1. Server-Side Token Generation
 The server generates a signed JWT using a secret key. This ensures that user data (like Stripe account details) cannot be tampered with.
 
-const jwt = require('jsonwebtoken');
-
-// Securely sign user data for the chatbot
-const token = jwt.sign(
-    { 
-        user_id: user.id,
-        email: user.email,
-        stripe_accounts: user.stripe_accounts // Custom fintech data
-    }, 
-    process.env.CHATBOT_IDENTITY_SECRET, 
-    { expiresIn: '1h' }
-);
-
 2. Client-Side Authentication
 The frontend receives the secure token and "identifies" the user within the Chatbase environment.
-
-// Send the secure token to Chatbase
-const token = await getUserToken(); 
-window.chatbase('identify', { token });
 
 🛠 Tech Stack
 • Platform: Chatbase
